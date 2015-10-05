@@ -23,13 +23,6 @@ gulp.task('html', function () {
             .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('sass', function () {
-    return gulp.src('./styles/*.scss')
-                .pipe(sass())
-                .pipe(gulp.dest('./styles'))
-                .pipe(Browser-sync
-});
-
 // gulp.task('connect', function() {
 //   connect.server({
 //     livereload: true
@@ -44,7 +37,7 @@ gulp.task('watch', function() {
     runSequence('sass', 'browser-sync')
   });
 
-});
+// });
 
 // gulp.task('reload', function() {
 //     return gulp.src('.')
