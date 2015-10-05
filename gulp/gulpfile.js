@@ -1,27 +1,28 @@
-var gulp = require ('gulp');
-//var connect = require('gulp-connect');
-var runSequence = require('run-sequence');
-var wiredep = require('wiredep').stream;
-var useref = require('gulp-useref');
-var uglify = require('gulp-uglify');
-var minify = require('gulp-minify-css');
-var gulpif = require('gulp-if');
+var gulp = require('gulp');
+var requireDir = require('require-dir');
+// var connect = require('gulp-connect');
+// var runSequence = require('run-sequence');
+// var wiredep = require('wiredep').stream;
+// var useref = require('gulp-useref');
+// var uglify = require('gulp-uglify');
+// var minify = require('gulp-minify-css');
+// var gulpif = require('gulp-if');
 
-gulp.task('default', ['sass', 'browser-sync', 'watch']);
+// gulp.task('default', ['sass', 'browser-sync', 'watch']);
 
 //for production files
-gulp.task('build', ['sass', 'html']);
+// gulp.task('build', ['sass', 'html']);
 
-gulp.task('html', function () {
-    var assets = useref.assets();
-    return gulp.src('./*.html')
-            .pipe(assets)
-            .pipe(gulpif('*.js', uglify()))
-            .pipe(gulpif('*.css', minify()))
-            .pipe(assets.restore())
-            .pipe(useref())
-            .pipe(gulp.dest('./dist'));
-});
+// gulp.task('html', function () {
+//     var assets = useref.assets();
+//     return gulp.src('./*.html')
+//             .pipe(assets)
+//             .pipe(gulpif('*.js', uglify()))
+//             .pipe(gulpif('*.css', minify()))
+//             .pipe(assets.restore())
+//             .pipe(useref())
+//             .pipe(gulp.dest('./dist'));
+// });
 
 // gulp.task('connect', function() {
 //   connect.server({
@@ -30,12 +31,12 @@ gulp.task('html', function () {
 // });
 
 
-gulp.task('watch', function() {
-  gulp.watch(['**/*.html'], ['browser-sync']);
+// gulp.task('watch', function() {
+//   gulp.watch(['**/*.html'], ['browser-sync']);
 
-  gulp.watch(['**/*.scss'], function(){
-    runSequence('sass', 'browser-sync')
-  });
+//   gulp.watch(['**/*.scss'], function(){
+//     runSequence('sass', 'browser-sync')
+//   });
 
 // });
 
@@ -46,36 +47,37 @@ gulp.task('watch', function() {
 
 
 //auto insert bower components in html
-gulp.task('bower', function () {
-  gulp.src('./index.html')
-    .pipe(wiredep())
-    .pipe(gulp.dest('.'));
-});
+// gulp.task('bower', function () {
+//   gulp.src('./index.html')
+//     .pipe(wiredep())
+//     .pipe(gulp.dest('.'));
+// });
 
 
-
-var requireDir = require('require-dir');
-
+// Specify paths & globbing patterns for tasks.
 // Specify paths & globbing patterns for tasks.
 global.paths = {
   // HTML sources.
-  'html': './src/*.html',
+  'html': './*.html',
   // JS sources.
-  'js': './src/js/**/*.js',
+  'js': './scripts/*.js',
   // SASS sources.
-  'sass': './src/scss/**/*.scss',
-  // Image sources.
-  'img': './src/img/*',
+  'sass': './styles/*.scss',
   // Sources folder.
   'src': './src',
   // Compiled CSS folder.
-  'css': './src/css',
+  'css': './styles',
   // Distribution folder.
   'dist': './dist'
-};
+}
 
 // Require all tasks in the 'gulp' folder.
 requireDir('./gulp', { recurse: false });
+
+// Default task; start local server & watch for changes.
+gulp.task('default', ['sass', 'html', 'lint', 'browser-sync']);
+//for production files
+//gulp.task('build', ['sass', 'html']);
 
 
 
