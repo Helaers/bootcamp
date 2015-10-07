@@ -1,0 +1,24 @@
+{
+  "name": "modules-requirejs",
+  "version": "0.0.0",
+  "authors": [
+    "Sfen Helaers <sfenhelaers@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.20",
+    "requirejs-domReady": "~2.0.1",
+    "bootstrap": "~3.3.5"
+  }
+}
