@@ -128,6 +128,8 @@ jQuery(function ($) {
                 return;
             }
 
+            todoRepo.add(val);
+
             this.todos.push({
                 id: util.uuid(),
                 title: val,
@@ -178,8 +180,8 @@ jQuery(function ($) {
             this.render();
         },
         destroy: function (e) {
-            todoRepo.remove(this.indexFromEl(e.target));
-            //this.todos.splice(this.indexFromEl(e.target), 1);
+            //todoRepo.remove(this.indexFromEl(e.target));
+            this.todos.splice(this.indexFromEl(e.target), 1);
             this.render();
         }
     };

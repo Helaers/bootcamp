@@ -28,7 +28,6 @@ var todoRepo = (function() {
     }
 
     function toggleAll(active) {
-
         todos.forEach(function (todo) {
             todo.completed = active;
         });
@@ -37,7 +36,6 @@ var todoRepo = (function() {
     function get(id) {
         return todos[id];
     }
-
 
     function add(item) {
         todos.push({
@@ -55,7 +53,8 @@ var todoRepo = (function() {
         todos: todos,
         init: init,
         getList: getList,
-        remove: remove
+        remove: remove,
+        add: add
     }
 
 })();
