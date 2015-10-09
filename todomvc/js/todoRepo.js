@@ -34,8 +34,8 @@ var todoRepo = (function() {
         });
     }
 
-    function getId(id) {
-        return todos[id].id;
+    function get(id) {
+        return todos[id];
     }
 
 
@@ -47,15 +47,15 @@ var todoRepo = (function() {
         });
     }
 
-    function remove(e) {
-        todos.splice(this.indexFromEl(e.target), 1);
+    function remove(index) {
+        todos.splice(index, 1);
     }
 
     return {
         todos: todos,
         init: init,
-        getList: getList
-        //add: add
+        getList: getList,
+        remove: remove
     }
 
 })();

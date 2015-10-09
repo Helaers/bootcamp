@@ -178,7 +178,8 @@ jQuery(function ($) {
             this.render();
         },
         destroy: function (e) {
-            this.todos.splice(this.indexFromEl(e.target), 1);
+            todoRepo.remove(this.indexFromEl(e.target));
+            //this.todos.splice(this.indexFromEl(e.target), 1);
             this.render();
         }
     };
