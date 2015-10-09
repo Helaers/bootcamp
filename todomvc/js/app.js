@@ -72,7 +72,7 @@ jQuery(function ($) {
         toggleAll: function (e) {
             var isChecked = $(e.target).prop('checked');
 
-            //todoRepo.toggleAll(isChecked); OK?
+            todoRepo.toggleAll(isChecked);
             this.todos.forEach(function (todo) {
                 todo.completed = isChecked;
             });
@@ -128,7 +128,7 @@ jQuery(function ($) {
                 return;
             }
 
-            todoRepo.add(val);
+            //todoRepo.add(val);
 
             this.todos.push({
                 id: util.uuid(),
