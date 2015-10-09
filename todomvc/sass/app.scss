@@ -1,0 +1,14 @@
+@import 'base';
+@import 'index';
+
+$none: block;
+$color: red;
+
+#main,
+#footer {
+	display: $none;
+}
+
+/*#header {
+    background-color: $color;
+}*/
