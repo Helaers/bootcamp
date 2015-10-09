@@ -13,6 +13,8 @@ var util = (function(){
                 }
                 uuid += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random)).toString(16);
             }
+
+            return uuid;
     }
 
     function pluralize(count, word){

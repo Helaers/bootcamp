@@ -21,7 +21,10 @@ var todoRepo = (function() {
             });
         }
 
-        return todos;
+        if (!getFilter){
+            return todos;
+        }
+
     }
 
     function toggleAll(active) {
@@ -36,19 +39,17 @@ var todoRepo = (function() {
     }
 
 
-    // function add(item) {
+    function add(item) {
+        todos.push({
+            id: util.uuid(),
+            title: item,
+            completed: false
+        });
+    }
 
-    //     this.todos.push({
-    //         id: util.uuid(),
-    //         title: item,
-    //         completed: false
-    //     });
-    // }
-
-    // function destroy(e) {
-    //     this.todos.splice(this.indexFromEl(e.target), 1);
-    //     this.render();
-    // }
+    function remove(e) {
+        todos.splice(this.indexFromEl(e.target), 1);
+    }
 
     return {
         todos: todos,
