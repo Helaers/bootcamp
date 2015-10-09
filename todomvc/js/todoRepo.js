@@ -45,6 +45,15 @@ var todoRepo = (function() {
         });
     }
 
+    function update(index, value) {
+        if (value) {
+            todos[index].title = value;
+        } else {
+            todos.splice(index, 1);
+        }
+    }
+
+
     function remove(index) {
         todos.splice(index, 1);
     }
@@ -55,7 +64,8 @@ var todoRepo = (function() {
         getList: getList,
         remove: remove,
         add: add,
-        toggleAll: toggleAll
+        toggleAll: toggleAll,
+        update: update
     }
 
 })();

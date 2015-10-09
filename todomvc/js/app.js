@@ -72,7 +72,7 @@ jQuery(function ($) {
         toggleAll: function (e) {
             var isChecked = $(e.target).prop('checked');
 
-            todoRepo.toggleAll(isChecked);
+            //todoRepo.toggleAll(isChecked);
             this.todos.forEach(function (todo) {
                 todo.completed = isChecked;
             });
@@ -170,6 +170,7 @@ jQuery(function ($) {
             }
 
             var i = this.indexFromEl(el);
+            //todoRepo.update(i, val);
 
             if (val) {
                 this.todos[i].title = val;
