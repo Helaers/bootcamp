@@ -21,7 +21,7 @@ var todoRepo = (function() {
             });
         }
 
-        if (!getFilter){
+        if (!getFilter || 'all'){
             return todos;
         }
 

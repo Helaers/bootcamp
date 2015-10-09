@@ -49,7 +49,7 @@ jQuery(function ($) {
         },
         render: function () {
             //var todos = this.getFilteredTodos();
-            var todos = todoRepo.getList();
+            var todos = todoRepo.getList(this.filter);
             this.$todoList.html(this.todoTemplate(todos));
             this.$main.toggle(todos.length > 0);
             this.$toggleAll.prop('checked', todoRepo.getList('active').length === 0);
@@ -103,7 +103,7 @@ jQuery(function ($) {
             // return this.todos;
         },
         destroyCompleted: function () {
-            todos = getList('active');
+            todos = todoRepo.getList('active');
             this.filter = 'all';
             this.render();
         },
