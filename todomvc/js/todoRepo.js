@@ -65,7 +65,8 @@ var todoRepo = (function() {
         remove: remove,
         add: add,
         toggleAll: toggleAll,
-        update: update
+        update: update,
+        get: get
     }
 
 })();
