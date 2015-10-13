@@ -39,7 +39,7 @@ User.collection.count(function (err, count) {
             var user = {
                 name: Faker.name.findName(),
                 email: Faker.internet.email(),
-                age: Faker.random.number(),
+                age: Math.round(Math.random() * (70 - 18) + 18),
                 homeAddress: {
                     addressLine: Faker.address.streetAddress(),
                     city: Faker.address.city(),
