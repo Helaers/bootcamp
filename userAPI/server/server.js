@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
-var userApi = require('./users');
+var userApi = require('./routes/users');
 
 var mongoose = require('mongoose');
 
@@ -39,7 +39,7 @@ User.collection.count(function (err, count) {
             var user = {
                 name: Faker.name.findName(),
                 email: Faker.internet.email(),
-                age: Math.round(Math.random() * (70 - 18) + 18),
+                age: Faker.random.number(100),
                 homeAddress: {
                     addressLine: Faker.address.streetAddress(),
                     city: Faker.address.city(),
@@ -49,7 +49,7 @@ User.collection.count(function (err, count) {
             userList.push(user);
             counter++;
 
-            console.log('fake user added');
+            //console.log('fake user added');
         }
 
         // insert document into database

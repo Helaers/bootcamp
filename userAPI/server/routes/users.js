@@ -2,22 +2,31 @@ var express = require('express');
 var router = express.Router();
 var _ = require('underscore');
 
-var User = require('./model/user');
-var userMapper = require('./mapper/userMapper');
+var User = require('../model/user');
+var userMapper = require('../mapper/userMapper');
 
-//get all
+//get all --> /api/users?page=0&pageSize=20&sort=-age
 router.get('/', function(req, res, next) {
 
-    User.find(function(err, users) {
+    var pageSize = req.query.pageSize || 100;
+    var page = req.query.page || 0;
 
-        if (!users) {
-            return res.status(404).send('Resources not found');
-        }
+    //paging & sorting
+    User.find()
+        .limit(pageSize)
+        .skip(pageSize * page)
+        .sort(req.query.sort)
+        .exec(function(err, users){
 
-        var resources = _.map(users, function(user){
-            return userMapper.map(user);
-        });
-        res.status(200).send(resources);
+            if (!users) {
+                return res.status(404).send('Resources not found');
+            }
+
+            var resources = _.map(users, function(user){
+                return userMapper.map(user);
+            });
+
+            res.status(200).send(resources);
 
     });
 
